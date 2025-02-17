@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { FormsModule } from '@angular/forms';
 import { CalculadoraComponent } from './calculadora.component';
 
 describe('CalculadoraComponent', () => {
@@ -8,8 +7,8 @@ describe('CalculadoraComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CalculadoraComponent ],
-      imports: [ FormsModule ]
+      // Com que CalculadoraComponent és standalone, l'importem aquí
+      imports: [CalculadoraComponent]
     })
     .compileComponents();
   });
@@ -20,38 +19,42 @@ describe('CalculadoraComponent', () => {
     fixture.detectChanges();
   });
 
-  it('deve sumar dos nombres correctament', () => {
-    component.num1 = 5;
-    component.num2 = 3;
-    component.suma();
-    expect(component.resultat).toBe(8);
+  it('should create the component', () => {
+    expect(component).toBeTruthy();
   });
 
-  it('deve restar dos nombres correctament', () => {
+  it('should sum two numbers correctly', () => {
+    component.num1 = 2;
+    component.num2 = 3;
+    component.suma(); // assegura't que el mètode s'anomena així
+    expect(component.resultat).toEqual(5);
+  });
+
+  it('should subtract two numbers correctly', () => {
     component.num1 = 5;
     component.num2 = 3;
     component.resta();
-    expect(component.resultat).toBe(2);
+    expect(component.resultat).toEqual(2);
   });
 
-  it('deve multiplicar dos nombres correctament', () => {
-    component.num1 = 5;
+  it('should multiply two numbers correctly', () => {
+    component.num1 = 4;
     component.num2 = 3;
-    component.multiplicacio();
-    expect(component.resultat).toBe(15);
+    component.multiplicacio(); // assegura't que el mètode s'anomena així
+    expect(component.resultat).toEqual(12);
   });
 
-  it('deve dividir dos nombres correctament', () => {
-    component.num1 = 6;
-    component.num2 = 3;
+  it('should divide two numbers correctly', () => {
+    component.num1 = 10;
+    component.num2 = 2;
     component.divisio();
-    expect(component.resultat).toBe(2);
+    expect(component.resultat).toEqual(5);
   });
 
-  it('deve mostrar error en divisió per 0', () => {
-    component.num1 = 6;
+  it('should display error on division by zero', () => {
+    component.num1 = 10;
     component.num2 = 0;
     component.divisio();
-    expect(component.resultat).toBe('Error: Divisió per 0');
+    expect(component.resultat).toEqual('Error: Divisió per 0');
   });
 });

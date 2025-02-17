@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-calculadora',
+  standalone: true,
   templateUrl: './calculadora.component.html',
-  styleUrls: ['./calculadora.component.css']
+  styleUrls: ['./calculadora.component.css'],
+  imports: [FormsModule]  // Important: afegeix FormsModule aquí!
 })
 export class CalculadoraComponent {
   num1: number = 0;
