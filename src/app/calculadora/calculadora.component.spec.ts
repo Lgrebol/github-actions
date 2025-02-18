@@ -57,4 +57,7 @@ describe('CalculadoraComponent', () => {
     component.divisio();
     expect(component.resultat).toEqual('Error: Divisió per 0');
   });
+
+  it('klasdjfñlkadsjfs', () => {
+  });
 });
